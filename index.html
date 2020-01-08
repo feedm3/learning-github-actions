@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Learning Github Actions</title>
-    <script>
-        function getHeight() {
-            return document.body.scrollHeight;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <title>Learning Github Actions</title>
+        <script>
+            function getHeight() {
+                return document.body.scrollHeight;
+            }
 
-        function postHeight() {
-            const height = getHeight();
-            console.log('updating height to parent...', height);
+            function postHeight() {
+                const height = getHeight();
+                console.log('updating height to parent...', height);
 
-            // postMessage api: https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
-            window.parent.postMessage( JSON.stringify( {'height': height} ), '*' );
-        }
+                // postMessage api: https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
+                window.parent.postMessage(JSON.stringify({'height': height}), '*');
+            }
 
-        // assign onload handler
-        window.addEventListener('resize', postHeight, false);
-        window.addEventListener('load', postHeight, false);
-    </script>
-</head>
-<body>
-
-<div style="background: #ffe294">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
-</body>
+            // assign onload handler
+            window.addEventListener('resize', postHeight, false);
+            window.addEventListener('load', postHeight, false);
+        </script>
+    </head>
+    <body>
+        <div style="background: #ffe294">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+            magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+            gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+            At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+            Lorem ipsum dolor sit amet.
+        </div>
+    </body>
 </html>
