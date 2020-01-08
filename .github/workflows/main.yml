@@ -1,18 +1,20 @@
 name: Deploy to Github pages
 
-on: [push,issue_comment]
+on: [issues, issue_comment]
 
 jobs:
-  build:
-
+  comment: # https://github.com/estrada9166/issue-assigner
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
     - name: Assign and comment on an issue
       uses: estrada9166/issue-assigner@v1
       with:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
         WITH_COMMENTS: true
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: echo Hello, world!
