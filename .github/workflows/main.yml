@@ -15,6 +15,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
+      - name: Deploy to Github pages
+        uses: alex-page/blazing-fast-gh-pages-deploy@v1.1.0
+        with:
+          repo-token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+          site_directory: .
