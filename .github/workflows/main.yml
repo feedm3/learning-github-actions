@@ -19,4 +19,4 @@ jobs:
         uses: alex-page/blazing-fast-gh-pages-deploy@v1.1.0
         with:
           repo-token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-          site-directory: /
+          site-directory: .
