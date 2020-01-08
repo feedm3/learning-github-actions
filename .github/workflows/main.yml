@@ -1,17 +1,10 @@
 name: Deploy to Github pages
 
-on: [issues, issue_comment]
+on:
+  push:
+    branches: master
 
 jobs:
-  comment: # https://github.com/estrada9166/issue-assigner
-    runs-on: ubuntu-latest
-    steps:
-    - name: Assign and comment on an issue
-      uses: estrada9166/issue-assigner@v1
-      with:
-        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        WITH_COMMENTS: true
-
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -19,4 +12,4 @@ jobs:
         uses: alex-page/blazing-fast-gh-pages-deploy@v1.1.0
         with:
           repo-token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
-          site-directory: .
+          site-directory: dist

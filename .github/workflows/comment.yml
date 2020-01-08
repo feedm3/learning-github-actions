@@ -1,0 +1,16 @@
+#
+# if you put a link to a line of code in the repo to a comment, the author of the line gets assigned to the issue
+#
+name: Assign issue
+
+on: [issues, issue_comment]
+
+jobs:
+  comment: # https://github.com/estrada9166/issue-assigner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign and comment on an issue
+        uses: estrada9166/issue-assigner@v1
+        with:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          WITH_COMMENTS: true
