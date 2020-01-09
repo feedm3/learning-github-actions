@@ -14,8 +14,8 @@
             }
         </style>
         <script>
-            // save the height in a variable to be able to debounce
-            let height;
+            const ALLOWED_TARGET = '*'; // '*' only during development!
+            let height; // to be able to debounce
 
             function getHeight() {
                 return document.body.scrollHeight;
@@ -25,12 +25,13 @@
                 const currentHeight = getHeight();
 
                 if (currentHeight !== height) {
-                    height = currentHeight;
+                    console.log('updating height to parent...', currentHeight);
 
-                    console.log('updating height to parent...', height);
-                    // postMessage api:
+                    height = currentHeight;
+                    const data = JSON.stringify({'height': height});
+
                     // https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
-                    window.parent.postMessage(JSON.stringify({'height': height}), '*');
+                    window.parent.postMessage(data, ALLOWED_TARGET);
                 }
             }
 
